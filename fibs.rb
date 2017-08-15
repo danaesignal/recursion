@@ -11,18 +11,13 @@ def fibs(n, result=[0,1])
   result
 end
 
-def fibs_rec(n, result=[0])
-  if result.length == 0 
-    result << 0
-  elsif result.length == 1
-    result << 1
-  else
-    result << (result[-1] + result[-2])
-  end
+def fibs_rec2(n, result=[0])
+  result[1] = 1 if n > 0
+  result.push(result[-1] + result[-2]) if n > 1
   n -= 1
-  fibs_rec(n, result) unless n == 0
+  fibs_rec2(n, result) unless n < 0
   result
 end
 
 puts fibs(8).inspect
-puts fibs_rec(8).inspect
+puts fibs_rec2(3).inspect
